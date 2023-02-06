@@ -11,8 +11,7 @@ class GetIP(IiFile):
 
     def get(file) -> str:
         with open(file, "r") as f:
-            for line in iter(f.readline, ""):
-                return line.rstrip('\n')
+            return f.readline().rstrip('\n')
 
 class GetEmails(IiFile):
     """ Returns lists with emails"""
