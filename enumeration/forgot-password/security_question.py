@@ -1,18 +1,20 @@
-import requests
-from get_contents import GetContentsOfFile
+from file_factory import GetContentsOfFile
+from request_factory import RequestFactory
 
 
 def main():
     ip = GetContentsOfFile("list.txt", 'ip').get()
     email_list = GetContentsOfFile("list.txt", 'emails').get()
     valid_emails = []
-    for email in email_list:
-        url = 'http://%s/rest/user/security-question?email=%s' % (ip, email)
-        response = requests.get(url, headers= {'Accept' : 'application/json'})
-        if (len(response.json()) > 0):
-            valid_emails.append(email)
 
+    Request = RequestFactory
+
+    for email in email_list:
+        Response = Request.send('securityquestion', email, ip, {'Accept' : 'application/json'})
+        if len(Response.json()): valid_emails.append([email, Response.json()])
     
     print(valid_emails)
+
+
 if __name__ =="__main__":
     main()
