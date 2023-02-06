@@ -14,17 +14,5 @@ def main():
 
     
     print(valid_emails)
-        
-    
-    
-
-
-# header = {
-#     'Accept' : 'application/json'
-# }
-# url = "http://192.168.1.227:3000/rest/user/security-question?email=test123@gmail.com"
-# response = requests.get(url, headers = header)
-# print(response.status_code)
-
 if __name__ =="__main__":
     main()
