@@ -26,6 +26,7 @@ class GetEmails(IiFile):
 
 
 class GetContentsOfFile:
+    """ Class for deciding which """
     def __init__(self, file, context):
         self.file = file
         self.context = context

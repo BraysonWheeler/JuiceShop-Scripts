@@ -21,7 +21,7 @@ class IPost(IRequest):
 class SecurityQuestion(IRequest):
     """ Sends request to SecurityQuestion """
 
-    def __init__(self, email, ip, headers):
+    def __init__(self, email, ip, headers) -> None:
         self.email = email
         self.ip = ip
         self.headers = headers
@@ -31,6 +31,7 @@ class SecurityQuestion(IRequest):
     
 
 class RequestFactory:
+    """ Class for deciding what type of Request to create """
     def send(context, email, ip, headers) -> requests:
         if context == 'securityquestion':
             return SecurityQuestion(email, ip, headers).get()
